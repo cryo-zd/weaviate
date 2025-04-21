@@ -29,7 +29,7 @@ func FileExists(file string) (bool, error) {
 
 func Fsync(path string) error {
 	tmpFile := filepath.Join(path, ".sync.tmp")
-	if err := os.WriteFile(tmpFile, []byte{}, 0o66); err != nil {
+	if err := os.WriteFile(tmpFile, []byte{}, 0o666); err != nil {
 		return err
 	}
 	defer os.Remove(tmpFile)
